@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     public function index()
-    {{
+    {
         $blogs = Blog::all();
 
         return response()->json($blogs);
-    }}
+    }
 
     public function store(Request $request)
     {
@@ -20,7 +20,7 @@ class BlogController extends Controller
             'title' => $request->title,
             'body' => $request->body,
         ]);
-  
+
         return response()->json($blog);
     }
 
