@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BlogStoreRequest;
+use App\Http\Requests\BlogUpdateRequest;
+use App\Http\Resources\BlogResource;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 
@@ -9,44 +12,48 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::paginate(12);
 
-        return response()->json($blogs);
+        return BlogResource::collection($blogs);
     }
 
-    public function store(Request $request)
+    public function store(BlogStoreRequest $request)
     {
-        $blog = Blog::firstOrCreate([
-            'title' => $request->title,
-            'body' => $request->body,
+        $blog = Blog::create($request->only(['title','body']));
+
+        return new BlogResource($blog);
+    }
+
+    public function show(Request $request)
+    {
+        $request->validate([
+            'blog_id' => ['required','int','exists:blogs,id']
         ]);
 
-        return response()->json($blog);
+        $blog = Blog::find($request->input('blog_id'));
+
+        return new BlogResource($blog);
     }
 
-
-    public function show($id)
+    public function update(BlogUpdateRequest $request)
     {
-        $blog = Blog::find($id);
+        $blog = Blog::find($request->input('blog_id'));
+        $blog->update($request->only(['title','body']));
 
-        return response()->json($blog);
+        return new BlogResource($blog);
     }
 
-    public function update(Request $request, $id)
+    public function destroy(Request $request)
     {
-        $blog = Blog::find($id);
-        $blog->title = $request->title;
-        $blog->body = $request->body;
-        $blog->save();
+        $request->validate([
+            'blog_id' => ['required','int','exists:blogs,id']
+        ]);
 
-        return response()->json($blog);
-    }
+        $blog = Blog::find($request->input('blog_id'));
 
-    public function destroy($id)
-    {
-        $blog = Blog::find($id);
         $blog->delete();
 
-        return response()->json(['message' => 'Blog deleted']);
+        return response()->json(['message' => 'Blog deleted'], 204);
     }
+
 }

@@ -19,5 +19,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('blogs', BlogController::class);
+
+Route::controller(BlogController::class)->prefix('blogs')->group(function (){
+    Route::get('/', 'index');
+    Route::get('show', 'show');
+    Route::post('store', 'store');
+    Route::put('update', 'update');
+    Route::delete('delete', 'destroy');
+});
 
