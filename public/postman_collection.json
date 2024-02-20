@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "b64ba4ea-6a5c-4889-a426-3c63ae9957d2",
+		"name": "2024_02_20_145737_laravel_collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27420547"
+	},
+	"item": [
+		{
+			"name": "api/blogs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/blogs",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"blogs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/blogs/show",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/blogs/show/15",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"blogs",
+						"show",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/blogs/store",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "title",
+							"type": "text"
+						},
+						{
+							"key": "body",
+							"value": "bodyyyy",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/api/blogs/store",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"blogs",
+						"store"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/blogs/update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Yeni Başlssasasadsaık\",\r\n    \"body\": \"Yeni İçerik\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/blogs/update/15",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"blogs",
+						"update",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/blogs/delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/blogs/delete/8",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"blogs",
+						"delete",
+						"8"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000"
+		}
+	]
+}
