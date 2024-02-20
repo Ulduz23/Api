@@ -19,3 +19,8 @@ php artisan db:seed
 ```php
 php artisan serve
 ```
+
+Api json for Postman
+Download
+
+[JSON Dosyası](storage/app/postman/laravel_collection.json.postman_collection.json)
