@@ -23,4 +23,5 @@ php artisan serve
 Api json for Postman
 Download
 
-<a href="public/postman_collection.json" download>JSON Dosyasını İndir</a>
+[JSON Dosyasını İndir](public/postman_collection.json)
+
