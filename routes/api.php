@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::controller(BlogController::class)->prefix('blogs')->group(function (){
+Route::controller(BlogController::class)->prefix('api/blogs')->group(function (){
     Route::get('/', 'index');
     Route::get('show', 'show');
     Route::post('store', 'store');
