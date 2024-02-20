@@ -19,12 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::controller(BlogController::class)->prefix('api/blogs')->group(function (){
+Route::controller(BlogController::class)->prefix('blogs')->group(function (){
     Route::get('/', 'index');
-    Route::get('show', 'show');
+    Route::get('show/{blog}', 'show');
     Route::post('store', 'store');
-    Route::put('update', 'update');
-    Route::delete('delete', 'destroy');
+    Route::put('update/{blog}', 'update');
+    Route::delete('delete/{blog}', 'destroy');
 });
-

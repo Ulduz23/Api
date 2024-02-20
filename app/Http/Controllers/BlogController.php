@@ -19,40 +19,28 @@ class BlogController extends Controller
 
     public function store(BlogStoreRequest $request)
     {
-        $blog = Blog::create($request->only(['title','body']));
+        $request=$request->validated();
+        $blog = Blog::create($request);
 
         return new BlogResource($blog);
     }
 
-    public function show(Request $request)
+    public function show(Blog $blog)
     {
-        $request->validate([
-            'blog_id' => ['required','int','exists:blogs,id']
-        ]);
+        return new BlogResource($blog);
+    }
 
-        $blog = Blog::find($request->input('blog_id'));
+    public function update(Blog $blog, BlogUpdateRequest $request)
+    {
+        $request = $request->validated();
+        $blog->update($request);
 
         return new BlogResource($blog);
     }
 
-    public function update(BlogUpdateRequest $request)
+    public function destroy(Blog $blog)
     {
-        $blog = Blog::find($request->input('blog_id'));
-        $blog->update($request->only(['title','body']));
-
-        return new BlogResource($blog);
-    }
-
-    public function destroy(Request $request)
-    {
-        $request->validate([
-            'blog_id' => ['required','int','exists:blogs,id']
-        ]);
-
-        $blog = Blog::find($request->input('blog_id'));
-
         $blog->delete();
-
         return response()->json(['message' => 'Blog deleted'], 204);
     }
 
