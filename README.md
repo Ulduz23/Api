@@ -23,5 +23,5 @@ php artisan serve
 Api json for Postman
 Download
 
-[JSON Dosyasını İndir](public/postman_collection.json)
+[JSON Dosyasını İndir](https://raw.githubusercontent.com/Ulduz23/Api/main/public/postman_collection.json)
 
